@@ -3,10 +3,12 @@ import os
 from typing import List
 from billete import Billete
 from denominacion import Denominacion
+from utils import Utils 
 class Cajero:
 
     def __init__(self):  
-        load_dotenv()      
+        load_dotenv()   
+        self.tools = Utils()   
         self.billetes: List[Billete]=[]
         self.billetes.append(
             Billete(Denominacion.CIEN.value, 
@@ -49,7 +51,8 @@ class Cajero:
         print(f"El cajero tiene un total de {total} córdobas")
 
     def crear_retiro(self):
-        monto = int(input("Ingrese el monto a retirar: "))
+        monto:str = input("Ingrese el monto a retirar: ")
+        monto=int(self.tools.es_monto_valido(monto))
         if monto < 100:
             print("El monto mínimo a retirar es de 100 córdobas")
             return
