@@ -22,8 +22,8 @@ Validaciones
 9. Si el usuario solicita un monto que no es un número entero positivo menor o igual a 500, debe mostrar un mensaje indicando que no se puede retirar esa cantidad.
 10 Validar la disponibilidad de los billetes
 """
-from utils import Utils
+from menus import Menus
 # Instancia de la clase Utils
-tools = Utils()
+menu = Menus()
 # Llamada al método get_menu de la clase Utils
-tools.get_menu()
+menu.get_menu()
