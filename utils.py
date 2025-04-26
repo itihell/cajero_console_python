@@ -12,13 +12,14 @@ class Utils:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def pintar_pausa(self):
+        print(Fore.GREEN + Style.BRIGHT)
         print("\nPresione una tecla para continuar...")
         input()
         self.limpiar_pantalla()
         self.get_menu()
 
     def imprimir_menu(self):
-        print(Fore.CYAN + Style.BRIGHT)
+        print(Fore.BLUE + Style.BRIGHT)
         print("###############################")
         print("###### Cajero Automatico ######")
         print("###### Opciones:         ######")
@@ -28,7 +29,21 @@ class Utils:
         
 
     def validar_opcion_menu(self):
-        opcion=int(input("\nSeleccione una opción: "))
+        print(Fore.YELLOW + Style.BRIGHT)
+        opcion=input("\nSeleccione una opción: ")
+        # validar si opcion esta vacia
+        if not opcion:
+            self.limpiar_pantalla()
+            print(Fore.RED + Style.BRIGHT)
+            print("No tecleo una opción del menú. Intente de nuevo.")
+            self.pintar_pausa()
+        # validar si option no es un número
+        if not opcion.isdigit():
+            self.limpiar_pantalla()
+            print(Fore.RED + Style.BRIGHT)
+            print("Debe seleccionar una opción válida. Intente de nuevo.")
+            self.pintar_pausa()
+        opcion=int(opcion)
         self.validar_opcion(opcion)
     
     def validar_opcion(self,opcion:int):
