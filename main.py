@@ -23,35 +23,7 @@ Validaciones
 10 Validar la disponibilidad de los billetes
 """
 from utils import Utils
-from cajero import Cajero
+# Instancia de la clase Utils
 tools = Utils()
-cajero =Cajero()
-
-
-def menu():
-    tools.limpiar_pantalla()
-    tools.imprimir_menu()
-    opcion=tools.validar_opcion_menu()
-    print(f"opcion seleccionada {opcion.value}")
-
-    if opcion.value ==4:
-        print("Gracias por usar el cajero automatico")
-        exit()
-    else: 
-        menu()
-
-menu()
-
-
-# if opcion.value ==1:
-#     tools.limpiar_pantalla()
-#     cajero.retirar()    
-# elif opcion.value ==2:
-#     tools.limpiar_pantalla()
-#     cajero.mostro_disponibilidad()   
-# elif opcion.value ==3:
-#     tools.limpiar_pantalla()
-#     cajero.estado_cajero()
-# else: 
-#     print("Gracias por usar el cajero automatico")
-#     exit()
+# Llamada al método get_menu de la clase Utils
+tools.get_menu()

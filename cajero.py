@@ -47,6 +47,14 @@ class Cajero:
     def mostro_disponibilidad(self):
         total =self.disponibilidad_fondos_cajero()
         print(f"El cajero tiene un total de {total} córdobas")
+
+    def crear_retiro(self):
+        monto = int(input("Ingrese el monto a retirar: "))
+        if monto < 100:
+            print("El monto mínimo a retirar es de 100 córdobas")
+            return
+        
+        self.retirar(monto)
     
     def retirar(self, monto:int):
         if monto > self.disponibilidad_fondos_cajero():
