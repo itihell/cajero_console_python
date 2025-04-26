@@ -1,10 +1,6 @@
 from colorama import Fore, Style,Back, init
 import os
-from menus import Menus
 class Utils:
-
-    def __init__(self):
-        self.menu=Menus()
    
     def mensaje_continuar(self):
         print(Fore.GREEN + Style.BRIGHT)
