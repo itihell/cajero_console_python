@@ -27,7 +27,7 @@ class Menus:
         print(Fore.YELLOW + Style.BRIGHT)
         opcion=input("\nSeleccione una opción: ")
         # validar si opcion esta vacia        
-        opcion=int(self.tools.es_opcion_valida(opcion))
+        opcion=int(self.es_opcion_valida(opcion))
         self.validar_opcion(opcion)
     
     def validar_opcion(self,opcion:int):
@@ -38,8 +38,8 @@ class Menus:
             self.pintar_pausa()
         elif opcion == OpcionMenu.RETIRO.value:
             self.tools.limpiar_pantalla()
-            self.cajero.crear_retiro()
-            self.pintar_pausa()
+            self.cajero.crear_retiro()            
+            self.get_menu()
         elif opcion == OpcionMenu.ESTADO.value:
             self.tools.limpiar_pantalla()
             self.cajero.mostro_disponibilidad() 
@@ -54,7 +54,33 @@ class Menus:
             
            
     
-    def get_menu(self):        
+    def get_menu(self): 
+        self.tools.limpiar_pantalla()       
         self.imprimir_menu()
         self.validar_opcion_menu()
+
+    def es_opcion_valida(self, opcion:str):
+        if not opcion:
+            self.tools.limpiar_pantalla()
+            print(Fore.RED + Style.BRIGHT)
+            print("No tecleo una opción del menú. Intente de nuevo.")
+            self.mensaje_continuar()
+            return 0
+
+        if len(opcion)==0:
+            self.tools.limpiar_pantalla()
+            print(Fore.RED + Style.BRIGHT)
+            print("No selecciono una opción. Intente de nuevo.")
+            self.mensaje_continuar()
+            return 0
+        
+        # validar si option no es un número
+        if not opcion.isdigit():
+            self.tools.limpiar_pantalla()
+            print(Fore.RED + Style.BRIGHT)
+            print("Debe seleccionar una opción válida. Intente de nuevo.")
+            self.mensaje_continuar()
+            return 0
+
+        return opcion
         
