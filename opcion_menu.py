@@ -4,3 +4,4 @@ class OpcionMenu(Enum):
     CONSULTA=2
     ESTADO=3
     SALIR=4
+    RELLENAR=5

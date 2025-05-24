@@ -44,6 +44,10 @@ class Menus:
             self.tools.limpiar_pantalla()
             self.cajero.mostro_disponibilidad() 
             self.pintar_pausa()
+        elif opcion == OpcionMenu.RELLENAR.value:
+            self.tools.limpiar_pantalla()
+            self.cajero.rellenar_cajero()
+            self.pintar_pausa()
         elif opcion == OpcionMenu.SALIR.value:  
             print("Gracias por usar el cajero automatico")
             exit()
