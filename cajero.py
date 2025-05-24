@@ -4,6 +4,7 @@ import os
 from typing import List
 from billete import Billete
 from denominacion import Denominacion
+from limite_relleno import LimiteRelleno
 from utils import Utils 
 class Cajero:
 
@@ -95,6 +96,17 @@ class Cajero:
             return
         
         self.retirar(monto)
+
+    def rellenar_cajero(self):
+        for denominacion in Denominacion:
+            billete:Billete =self.estado_denominacion(denominacion.value)
+            print(f"Billetes de {denominacion.name} tiene: {billete.cantidad}")
+            cantidad:int = int(input(f"Ingrese la cantidad de billetes de {denominacion.name}: "))
+            if cantidad + billete.cantidad > LimiteRelleno[denominacion.name].value:
+                print(f"El límite de billetes de {denominacion.name} es de {LimiteRelleno[denominacion.name].value}")
+                return
+            billete.cantidad+=cantidad
+        return
     
     def retirar(self, monto:int):
         billetes_a_entregar: List[Billete] = []
